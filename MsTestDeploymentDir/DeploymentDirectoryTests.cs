@@ -8,10 +8,10 @@ public class DeploymentDirectoryTests
     public TestContext TestContext { get; set; } = null!;
 
     [TestMethod]
-    public void ContentFileIsInDeploymentFolder()
+    public void ContentFileIsNotInDeploymentFolder()
     {
-        var path = Path.Combine(this.TestContext.DeploymentDirectory, "sample.json");
-        Assert.IsTrue(File.Exists(path));
+        var path = Path.Combine(this.TestContext.DeploymentDirectory ?? "", "sample.json");
+        Assert.IsFalse(File.Exists(path));
     }
 
     [TestMethod]
